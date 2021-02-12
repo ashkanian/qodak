@@ -5,7 +5,7 @@ from .models import Item
 
 class HomeView(ListView):
     model = Item
-    template_name = 'home.html'
+    template_name = 'index.html'
 
 
 class ProductView(DetailView):

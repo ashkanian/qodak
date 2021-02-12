@@ -18,6 +18,16 @@ class ItemCategory(models.Model):
         return self.title
 
 
+class ItemBrand(models.Model):
+    title = models.CharField(max_length=155, unique=True)
+
+    class Meta:
+        verbose_name_plural = 'Brands'
+
+    def __str__(self):
+        return self.title
+
+
 class Item(models.Model):
     title = models.CharField(max_length=155)
     short_desc = models.TextField(null=True)
@@ -26,6 +36,8 @@ class Item(models.Model):
     discount_price = models.IntegerField(blank=True, null=True)
     category = models.ForeignKey(
         ItemCategory, on_delete=models.CASCADE, null=True, blank=True)
+    brand = models.ForeignKey(
+        ItemBrand, on_delete=models.CASCADE, null=True, blank=True)
     label = models.CharField(choices=LABEL_CHOICES,
                              max_length=1, null=True, blank=True)
     slug = models.SlugField()
